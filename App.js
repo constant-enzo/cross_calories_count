@@ -1,11 +1,24 @@
 import React from 'react';
-import Start from "./app/views/Start"
-import { SafeAreaView } from "react-native";
-import GlobalStyles from './GlobalStyles';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+//views
+import StartScreen from "./app/views/StartScreen"
+import CrossActivitySelectionScreen from "./app/views/CrossActivitySelectionScreen"
+import CrossActivityInputScreen from "./app/views/CrossActivityInputScreen"
+
+
+//options={{headerShown: false}}
+const Stack = createStackNavigator();
+
 export default function App() {
   return (
-      <SafeAreaView style={GlobalStyles.droidSafeArea}>
-        <Start/>
-      </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Start" >
+        <Stack.Screen name="Start" component={StartScreen} options={{headerShown: false}} />
+        <Stack.Screen name="CrossActivitySelection" component={CrossActivitySelectionScreen} options={{headerShown: false}}  />
+        <Stack.Screen name="CrossActivityInput" component={CrossActivityInputScreen} options={{headerShown: false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+      
   );
 }
