@@ -1,7 +1,7 @@
 // assets/images/images.js
 const images = {
-    Biking: require("./activity_icons/bike.png"),
-    SkippingRope:require("./activity_icons/rope.png"),
+    bicycling: require("./activity_icons/bicycling.png"),
+    ropeJumping:require("./activity_icons/ropeJumping.png"),
     Boxing:require("./activity_icons/boxing.png"),
     WeightLifting:require("./activity_icons/weight_lifting.png"),
     Tennis:require("./activity_icons/tennis.png"),

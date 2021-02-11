@@ -15,9 +15,9 @@ export default class CrossActivityInputScreen extends React.Component {
     console.log("selections:" +this.state.selections)
   }
 
-  handleSelection(name,intensity){
-    console.log(name,intensity)
-    this.state.dict[name]=intensity
+  handleSelection(name,time,intensity){
+    console.log(name,time,intensity)
+    this.state.dict[name]=[time,intensity]
     console.log(this.state.dict)
   }
 
@@ -33,7 +33,7 @@ export default class CrossActivityInputScreen extends React.Component {
               renderItem={({item}) => <ActivitySetting name={item} update={this.handleSelection} />}
             />
             <View style={styles.result}>
-                <Result/>
+                <Result dict={this.state.dict}/>
             </View>
         </KeyboardAvoidingView>
     </SafeAreaView>

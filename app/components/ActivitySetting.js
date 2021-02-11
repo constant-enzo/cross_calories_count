@@ -12,16 +12,34 @@ export default class ActivitySetting extends React.Component {
       this.state = {
         bgColor1:"gray",
         bgColor2:"gray",
-        bgColor3:"gray"
+        bgColor3:"gray",
+        time:"10",
+        intensity:0
       }
     }
 
+    update(){
+      this.props.update(this.props.name,this.state.time,this.state.intensity)
+    }
+
+    handleInputChange = (text) => {
+      // function to control user input => remove character from string if not a number
+      if (/^\d+$/.test(text) || text === '') {
+        this.setState({
+          time: text
+        });
+      }
+  
+    }
+
+    
     handler1(){
       if(this.state.bgColor1==="gray"){
         this.setState({bgColor1:"white"})
         this.setState({bgColor2:"gray"})
         this.setState({bgColor3:"gray"})
-        this.props.update(this.props.name,1)
+        this.state.intensity=0
+        this.update()
       }
     //unselected
     else{
@@ -33,7 +51,9 @@ export default class ActivitySetting extends React.Component {
         this.setState({bgColor2:"white"})
         this.setState({bgColor1:"gray"})
         this.setState({bgColor3:"gray"})
-        this.props.update(this.props.name,2)
+        this.state.intensity=1
+        this.update()
+     
       }
     //unselected
     else{
@@ -45,7 +65,8 @@ export default class ActivitySetting extends React.Component {
         this.setState({bgColor3:"white"})
         this.setState({bgColor1:"gray"})
         this.setState({bgColor2:"gray"})
-        this.props.update(this.props.name,3)
+        this.state.intensity=2
+        this.update()
       }
     //unselected
     else{
@@ -92,6 +113,8 @@ export default class ActivitySetting extends React.Component {
                         style={{flex:3}}
                         keyboardType="number-pad" 
                         maxLength={3}
+                        value={this.state.time}
+                        onChangeText={this.handleInputChange}
                         />
                         <Text style={[styles.text,{textAlign:'right',flex:1, marginRight:10}]}>mins</Text>
                     </View>

@@ -37,25 +37,27 @@ export default class CrossActivitySelectionScreen extends React.Component {
             </View>
             <ScrollView style={styles.activities}>
                 <View style={styles.activities_row}>
-                    <ActivitySelector name="Biking" update={this.handler}/>
-                    <ActivitySelector name="SkippingRope" update={this.handler}/>
+                    <ActivitySelector showname="Bicycling" name="bicycling" update={this.handler}/>
+                    <ActivitySelector showname="Rope Jumping" name="ropeJumping" update={this.handler}/>
+                </View>
+                {/*
+                <View style={styles.activities_row}>
+                    <ActivitySelector showname="Biking" name="Boxing" update={this.handler}/>
+                    <ActivitySelector showname="Biking" name="WeightLifting" update={this.handler}/>
                 </View>
                 <View style={styles.activities_row}>
-                    <ActivitySelector name="Boxing" update={this.handler}/>
-                    <ActivitySelector name="WeightLifting" update={this.handler}/>
+                    <ActivitySelector showname="Biking" name="Tennis" update={this.handler}/>
+                    <ActivitySelector showname="Biking" name="Running" update={this.handler}/>
                 </View>
                 <View style={styles.activities_row}>
-                    <ActivitySelector name="Tennis" update={this.handler}/>
-                    <ActivitySelector name="Running" update={this.handler}/>
+                    <ActivitySelector showname="Biking" name="Football" update={this.handler}/>
+                    <ActivitySelector showname="Biking" name="Basketball" update={this.handler}/>
                 </View>
                 <View style={styles.activities_row}>
-                    <ActivitySelector name="Football" update={this.handler}/>
-                    <ActivitySelector name="Basketball" update={this.handler}/>
+                    <ActivitySelector showname="Biking" name="Rugby" update={this.handler}/>
+                    <ActivitySelector showname="Biking" name="Hockey" update={this.handler}/>
                 </View>
-                <View style={styles.activities_row}>
-                    <ActivitySelector name="Rugby" update={this.handler}/>
-                    <ActivitySelector name="Hockey" update={this.handler}/>
-                </View>
+                */}
             </ScrollView>
             <View>
                 <CircleButton
