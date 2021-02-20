@@ -1,41 +1,10 @@
 {
-    "bycicling": 
-      {
-        "low": 3.5,
-        "medium":6.8,
-        "high":9
-      },
-    "weightLifting":
-    {
-        "low": 3.5,
-        "medium":5,
-        "high":6
-    },
-    "calisthenitcs":{
-        "low": 2.8,
-        "medium":3.8,
-        "high":8
-    },
-    "basketball":{
-        "low": 4.5,
-        "medium":6.5,
-        "high":9.3
-    },
-    "boxing":{
-        "low": 5.5,
-        "medium":7.5,
-        "high":12.8
-    },
-    "football":{
-        "low": 5,
-        "medium":7,
-        "high":10
-    },
-    "ropeJumping":{
-        "low": 8.8,
-        "medium":11.8,
-        "high":12.3
-    }
-      
+    "bicycling": [ 3.5, 6.8, 9 ],
+    "weightLifting":[3.5,5,6],
+    "calisthenitcs":[2.8,3.8,8],
+    "basketball":[4.5,6.5,9.3],
+    "boxing":[5.5,7.5,12.8],
+    "football":[5,7,10],
+    "ropeJumping":[8.8,11.8,12.3]
 }
 

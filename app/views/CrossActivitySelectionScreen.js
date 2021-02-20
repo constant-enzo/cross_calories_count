@@ -37,14 +37,15 @@ export default class CrossActivitySelectionScreen extends React.Component {
             </View>
             <ScrollView style={styles.activities}>
                 <View style={styles.activities_row}>
-                    <ActivitySelector showname="Bicycling" name="bicycling" update={this.handler}/>
-                    <ActivitySelector showname="Rope Jumping" name="ropeJumping" update={this.handler}/>
+                    <ActivitySelector name="bicycling" update={this.handler}/>
+                    <ActivitySelector name="ropeJumping" update={this.handler}/>
+                </View>
+                
+                <View style={styles.activities_row}>
+                    <ActivitySelector name="boxing" update={this.handler}/>
+                    <ActivitySelector name="weightLifting" update={this.handler}/>
                 </View>
                 {/*
-                <View style={styles.activities_row}>
-                    <ActivitySelector showname="Biking" name="Boxing" update={this.handler}/>
-                    <ActivitySelector showname="Biking" name="WeightLifting" update={this.handler}/>
-                </View>
                 <View style={styles.activities_row}>
                     <ActivitySelector showname="Biking" name="Tennis" update={this.handler}/>
                     <ActivitySelector showname="Biking" name="Running" update={this.handler}/>

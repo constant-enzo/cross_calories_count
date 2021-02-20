@@ -3,22 +3,49 @@ import { View, Text,  StyleSheet, KeyboardAvoidingView, SafeAreaView, FlatList }
 import GlobalStyles from '../../GlobalStyles';
 import Result from "../components/Result"
 import ActivitySetting from "../components/ActivitySetting"
+import data from "../assets/data/data.json"
+
 export default class CrossActivityInputScreen extends React.Component {
   constructor(props){
     super(props);
     const {  selections }  = this.props.route.params;
+
     this.handleSelection= this.handleSelection.bind(this)
     this.state={
       selections: selections,
-      dict: {}
+      dict: {},
+      calories:0
     };
-    console.log("selections:" +this.state.selections)
   }
 
   handleSelection(name,time,intensity){
     console.log(name,time,intensity)
     this.state.dict[name]=[time,intensity]
-    console.log(this.state.dict)
+    this.calculateCalories()
+  }
+
+  
+  calculateCalories(){
+    
+    calories=0
+    kg=75
+    for (var name in this.state.dict) {
+      time=this.state.dict[name][0]
+      intensity=this.state.dict[name][1]
+      met=this.findMET(name,intensity)
+      calories+=met*kg*(time/60)
+    }
+    this.setState({calories: calories})
+  }
+  
+
+  findMET(name,intensity){
+    
+    console.log("finding "+ name + " MET")
+    
+    met=data[name][intensity]
+    console.log("calculated met:"+met)
+    return met
   }
 
 
@@ -31,9 +58,10 @@ export default class CrossActivityInputScreen extends React.Component {
             <FlatList 
               data={this.state.selections}
               renderItem={({item}) => <ActivitySetting name={item} update={this.handleSelection} />}
+              keyExtractor={(item, index) => index.toString()}
             />
             <View style={styles.result}>
-                <Result dict={this.state.dict}/>
+                <Result calories={this.state.calories}/>
             </View>
         </KeyboardAvoidingView>
     </SafeAreaView>

@@ -2,15 +2,19 @@ import React from 'react';
 import {Text, View, StyleSheet, Image} from 'react-native';
 
 export default class Result extends React.Component {
-  
-    render(){
+  constructor(props){
+    super(props);
+  }
+
+
+  render(){
     return (
       <View >
         <Text style={styles.text}> Résultat : </Text>
         <View style={styles.frame}>
           <View style={styles.second_frame}>
             <Text>Votre dépense calorique: </Text>
-            <Text> 10 kcal </Text>
+            <Text> {this.props.calories} </Text>
           </View>
         </View>
       </View>
