@@ -8,18 +8,18 @@ import data from "../assets/data/data.json"
 export default class CrossActivityInputScreen extends React.Component {
   constructor(props){
     super(props);
-    const {  selections }  = this.props.route.params;
+    const {  selections, kg }  = this.props.route.params;
 
     this.handleSelection= this.handleSelection.bind(this)
     this.state={
       selections: selections,
       dict: {},
-      calories:0
+      calories:0,
+      kg: kg
     };
   }
 
   handleSelection(name,time,intensity){
-    console.log(name,time,intensity)
     this.state.dict[name]=[time,intensity]
     this.calculateCalories()
   }
@@ -28,7 +28,8 @@ export default class CrossActivityInputScreen extends React.Component {
   calculateCalories(){
     
     calories=0
-    kg=75
+    kg = this.state.kg
+    console.log("kg:"+kg)
     for (var name in this.state.dict) {
       time=this.state.dict[name][0]
       intensity=this.state.dict[name][1]
@@ -40,11 +41,7 @@ export default class CrossActivityInputScreen extends React.Component {
   
 
   findMET(name,intensity){
-    
-    console.log("finding "+ name + " MET")
-    
     met=data[name][intensity]
-    console.log("calculated met:"+met)
     return met
   }
 

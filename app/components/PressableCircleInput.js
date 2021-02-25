@@ -18,11 +18,6 @@ export default class PressableCircleInput extends React.Component {
       });
       console.log("ok")
       kg_value=text
-      if(kg_value==""){
-        kg_value="0"
-      }
-
-      
       console.log("sending "+kg_value+ " to props")  
       this.props.action(kg_value)
     }

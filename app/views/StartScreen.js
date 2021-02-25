@@ -38,7 +38,7 @@ export default class StartScreen extends React.Component {
               />
             </View>
             <View style={{flex:2}}>
-              <Button title="go" onPress={() => navigation.navigate('CrossActivitySelection') }/>
+              <Button disabled={!this.state.kg_value} title="go" onPress={() => navigation.navigate('CrossActivitySelection',{kg: this.state.kg_value}) }/>
               <Text style={[styles.text,styles.topPadding]}>Ignorer...</Text>
             </View>
           </KeyboardAvoidingView>

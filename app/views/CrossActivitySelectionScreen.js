@@ -7,10 +7,11 @@ import CircleButton from "../components/CircleButton";
 export default class CrossActivitySelectionScreen extends React.Component {
   constructor(props){
     super(props);
-
+    const { kg } = this.props.route.params;
     this.handler = this.handler.bind(this)
     this.state = {
-      selections_array: []
+      selections_array: [],
+      kg: kg
     };
   }
 
@@ -62,7 +63,7 @@ export default class CrossActivitySelectionScreen extends React.Component {
             </ScrollView>
             <View>
                 <CircleButton
-                onPress={() => navigation.navigate('CrossActivityInput',{selections: this.state.selections_array})}
+                onPress={() => navigation.navigate('CrossActivityInput',{selections: this.state.selections_array, kg: this.state.kg})}
                 disabled={this.state.selections_array.length=== 0? true : false}
                 >
                     <Text>Go!</Text>
