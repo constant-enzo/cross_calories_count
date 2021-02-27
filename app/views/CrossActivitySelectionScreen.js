@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Button, ScrollView, StyleSheet, KeyboardAvoidingView, SafeAreaView } from "react-native";
+import { Text, View, Button, ScrollView, StyleSheet, KeyboardAvoidingView, SafeAreaView, TouchableOpacity } from "react-native";
 import GlobalStyles from '../../GlobalStyles';
 import ActivitySelector from "../components/ActivitySelector";
 import CircleButton from "../components/CircleButton";
@@ -34,7 +34,7 @@ export default class CrossActivitySelectionScreen extends React.Component {
         <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : null} style={styles.container}>
             <View style={styles.topPadding}>
-                <Text style={styles.text}>Select one or more activity</Text>
+                <Text style={styles.text}>Sélectionner une ou plusieurs activités</Text>
             </View>
             <ScrollView style={styles.activities}>
                 <View style={styles.activities_row}>
@@ -62,12 +62,9 @@ export default class CrossActivitySelectionScreen extends React.Component {
                 */}
             </ScrollView>
             <View>
-                <CircleButton
-                onPress={() => navigation.navigate('CrossActivityInput',{selections: this.state.selections_array, kg: this.state.kg})}
-                disabled={this.state.selections_array.length=== 0? true : false}
-                >
-                    <Text>Go!</Text>
-                </CircleButton>
+              <TouchableOpacity style={this.state.selections_array.length=== 0 ? styles.disabledSubmit : styles.submit} disabled={this.state.selections_array.length=== 0} onPress={() => navigation.navigate('CrossActivityInput',{selections: this.state.selections_array, kg: this.state.kg}) }>
+                <Text style={styles.submitText}> Suivant </Text>
+              </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
     </SafeAreaView>
@@ -103,5 +100,31 @@ const styles = StyleSheet.create({
     center:{
       alignItems:'center',
       justifyContent:'center'
-    }
+    },
+    disabledSubmit: {
+      marginRight:40,
+      marginLeft:40,
+      marginTop:10,
+      paddingTop:20,
+      paddingBottom:20,
+      backgroundColor:'#a9a9a9',
+      borderRadius:15,
+      marginBottom:15,
+    },
+    submit : {
+      marginRight:40,
+      marginLeft:40,
+      marginTop:10,
+      paddingTop:20,
+      paddingBottom:20,
+      backgroundColor:'#00bfff',
+      borderRadius:15,
+      marginBottom:15
+
+    },
+    submitText:{
+      color:'#fff',
+      textAlign:'center',
+      fontSize:20
+  }
 });

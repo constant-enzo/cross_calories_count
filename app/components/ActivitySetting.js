@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image, TextInput, TouchableOpacity} from 'react-native';
 import images from "../assets/images/images"
+import data_names from "../assets/data/data_names.json"
 
 export default class ActivitySetting extends React.Component {
   
@@ -71,7 +72,7 @@ export default class ActivitySetting extends React.Component {
     return (
       
       <View>
-        <Text style={styles.title}>{this.props.name}</Text>
+        <Text style={styles.title}>{data_names[this.props.name]}</Text>
         <View style={styles.container}>
             <View style={styles.image_container} >
                 <Image

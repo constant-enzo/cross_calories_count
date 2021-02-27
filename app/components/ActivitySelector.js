@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity} from "react-native";
 import images from "../assets/images/images"
+import data_names from "../assets/data/data_names.json"
 
 export default class ActivitySelector extends React.Component {
   constructor(props){
@@ -32,7 +33,7 @@ export default class ActivitySelector extends React.Component {
                 source={images[this.props.name]}
                 />
             </TouchableOpacity>
-            <Text style={styles.activity_name}>{this.props.name}</Text>
+            <Text style={styles.activity_name}>{data_names[this.props.name]}</Text>
         </View>
   );
   }
