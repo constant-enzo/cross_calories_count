@@ -16,9 +16,7 @@ export default class PressableCircleInput extends React.Component {
       this.setState({
         text: text
       });
-      console.log("ok")
       kg_value=text
-      console.log("sending "+kg_value+ " to props")  
       this.props.action(kg_value)
     }
     

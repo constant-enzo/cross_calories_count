@@ -14,7 +14,7 @@ export default class Result extends React.Component {
         <View style={styles.frame}>
           <View style={styles.second_frame}>
             <Text>Votre dépense calorique: </Text>
-            <Text> {this.props.calories} kcal </Text>
+            <Text> {Math.ceil(this.props.calories)} kcal </Text>
           </View>
         </View>
       </View>

@@ -29,7 +29,6 @@ export default class CrossActivityInputScreen extends React.Component {
     
     calories=0
     kg = this.state.kg
-    console.log("kg:"+kg)
     for (var name in this.state.dict) {
       time=this.state.dict[name][0]
       intensity=this.state.dict[name][1]

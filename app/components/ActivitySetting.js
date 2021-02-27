@@ -10,16 +10,23 @@ export default class ActivitySetting extends React.Component {
       this.handler2=this.handler2.bind(this)
       this.handler3=this.handler3.bind(this)
       this.state = {
-        bgColor1:"gray",
+        bgColor1:"white",
         bgColor2:"gray",
         bgColor3:"gray",
         time:"10",
         intensity:0
       }
+      this.update()
     }
 
-    update(){
-      this.props.update(this.props.name,this.state.time,this.state.intensity)
+    update(time){
+      if(time){
+        this.props.update(this.props.name,time,this.state.intensity)
+      }
+      else{
+        this.props.update(this.props.name,this.state.time,this.state.intensity)
+      }
+      
     }
 
     handleInputChange = (text) => {
@@ -28,8 +35,8 @@ export default class ActivitySetting extends React.Component {
         this.setState({
           time: text
         });
+        this.update(text)
       }
-  
     }
 
     
@@ -41,10 +48,6 @@ export default class ActivitySetting extends React.Component {
         this.state.intensity=0
         this.update()
       }
-    //unselected
-    else{
-        this.setState({bgColor1:"gray"})
-      }
     }
     handler2(){
       if(this.state.bgColor2==="gray"){
@@ -53,11 +56,6 @@ export default class ActivitySetting extends React.Component {
         this.setState({bgColor3:"gray"})
         this.state.intensity=1
         this.update()
-     
-      }
-    //unselected
-    else{
-        this.setState({bgColor2:"gray"})
       }
     }
     handler3(){
@@ -67,10 +65,6 @@ export default class ActivitySetting extends React.Component {
         this.setState({bgColor2:"gray"})
         this.state.intensity=2
         this.update()
-      }
-    //unselected
-    else{
-        this.setState({bgColor3:"gray"})
       }
     }
     render(){

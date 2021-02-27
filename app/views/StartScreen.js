@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Button, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, SafeAreaView } from "react-native";
+import { Text, View, Button, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, SafeAreaView, TouchableOpacity} from "react-native";
 import PressableCircleInput from "../components/PressableCircleInput"
 import GlobalStyles from '../../GlobalStyles';
 
@@ -38,8 +38,10 @@ export default class StartScreen extends React.Component {
               />
             </View>
             <View style={{flex:2}}>
-              <Button disabled={!this.state.kg_value} title="go" onPress={() => navigation.navigate('CrossActivitySelection',{kg: this.state.kg_value}) }/>
-              <Text style={[styles.text,styles.topPadding]}>Ignorer...</Text>
+              <TouchableOpacity style={!this.state.kg_value ? styles.disabledSubmit : styles.submit} disabled={!this.state.kg_value} onPress={() => navigation.navigate('CrossActivitySelection',{kg: this.state.kg_value}) }>
+                <Text style={styles.submitText}> Suivant </Text>
+              </TouchableOpacity>
+              <Text onPress={() => navigation.navigate('CrossActivitySelection',{kg: !this.state.kg_value ? '70' : this.state.kg_value})} style={[styles.text,styles.topPadding]}>Ignorer... </Text>
             </View>
           </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
@@ -62,6 +64,30 @@ const styles = StyleSheet.create({
       },
     topPadding : {
         paddingTop : 30
-    }
+    },
+    disabledSubmit: {
+      marginRight:40,
+      marginLeft:40,
+      marginTop:10,
+      paddingTop:20,
+      paddingBottom:20,
+      backgroundColor:'#a9a9a9',
+      borderRadius:15,
+    },
+    submit : {
+      marginRight:40,
+      marginLeft:40,
+      marginTop:10,
+      paddingTop:20,
+      paddingBottom:20,
+      backgroundColor:'#00bfff',
+      borderRadius:15,
+
+    },
+    submitText:{
+      color:'#fff',
+      textAlign:'center',
+      fontSize:20
+  }
   
 });
