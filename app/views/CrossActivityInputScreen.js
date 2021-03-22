@@ -49,7 +49,7 @@ export default class CrossActivityInputScreen extends React.Component {
     return (
     <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <KeyboardAvoidingView 
-        behavior={Platform.OS === "ios" ? "padding" : null} style={styles.container}>
+        behavior={"padding"} style={styles.container}>
             <Text style={[styles.text,styles.title]}>Compteur Calorique</Text>
             <FlatList 
               data={this.state.selections}

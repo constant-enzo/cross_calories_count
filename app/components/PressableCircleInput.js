@@ -16,8 +16,7 @@ export default class PressableCircleInput extends React.Component {
       this.setState({
         text: text
       });
-      kg_value=text
-      this.props.action(kg_value)
+      this.props.action(text)
     }
     
     
@@ -35,6 +34,7 @@ export default class PressableCircleInput extends React.Component {
             maxLength={3}
             onChangeText={this.handleInputChange}
             value={this.state.text}
+            autoFocus={true}
             />
             <Text style={styles.text}> KG </Text>
           </View>
@@ -56,16 +56,18 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').width * 0.7,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'gray'
+        backgroundColor:'darkgray'
     },
     text: {
         color:'white',
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        
     },
     circleText: {
       color:'white',
       fontSize: 90,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+
   }
 });

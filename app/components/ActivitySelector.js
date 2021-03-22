@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     square: {
         width: 130,
         height: 130,
+        borderRadius:10,
         justifyContent:"center",
         alignItems:"center",
     },

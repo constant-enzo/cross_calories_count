@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, Button, ScrollView, StyleSheet, KeyboardAvoidingView, SafeAreaView, TouchableOpacity } from "react-native";
+import { Tooltip } from 'react-native-elements';
 import GlobalStyles from '../../GlobalStyles';
 import ActivitySelector from "../components/ActivitySelector";
 import CircleButton from "../components/CircleButton";
@@ -25,9 +26,29 @@ export default class CrossActivitySelectionScreen extends React.Component {
     //temporary method to update component
     this.setState({selections_array: this.state.selections_array})
   }
-  render () {
+
+  renderElement(){
 
     const { navigation } = this.props;
+
+    if(this.state.selections_array.length=== 0)
+       return (
+      <Tooltip containerStyle={{backgroundColor:"#a9a9a9"}} pointerColor={"#a9a9a9"} popover={<Text>Sélectionner au moins une activité</Text>} withOverlay={false} >
+        <TouchableOpacity style={styles.disabledSubmit} disabled={true}>
+          <Text style={styles.submitText}> Suivant </Text>
+        </TouchableOpacity>
+      </Tooltip>
+      )
+    return (
+      <TouchableOpacity style={styles.submit} onPress={() => navigation.navigate('CrossActivityInput',{selections: this.state.selections_array, kg: this.state.kg}) }>
+        <Text style={styles.submitText}> Suivant </Text>
+      </TouchableOpacity>
+    )
+ }
+
+  render () {
+
+    
 
     return (
     <SafeAreaView style={GlobalStyles.droidSafeArea}>
@@ -62,9 +83,7 @@ export default class CrossActivitySelectionScreen extends React.Component {
                 */}
             </ScrollView>
             <View>
-              <TouchableOpacity style={this.state.selections_array.length=== 0 ? styles.disabledSubmit : styles.submit} disabled={this.state.selections_array.length=== 0} onPress={() => navigation.navigate('CrossActivityInput',{selections: this.state.selections_array, kg: this.state.kg}) }>
-                <Text style={styles.submitText}> Suivant </Text>
-              </TouchableOpacity>
+              { this.renderElement() }
             </View>
         </KeyboardAvoidingView>
     </SafeAreaView>

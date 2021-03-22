@@ -105,9 +105,9 @@ export default class ActivitySetting extends React.Component {
                     <View style={styles.time_container}>
                         <Text style={[styles.text,{textAlign:'left',flex:1, marginLeft:10}]}>Durée:</Text>
                         <TextInput 
-                        style={{flex:3}}
+                        style={[styles.input_text,{flex:3}]}
                         keyboardType="number-pad" 
-                        maxLength={3}
+                        maxLength={4}
                         value={this.state.time}
                         onChangeText={this.handleInputChange}
                         />
@@ -124,11 +124,13 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     flexDirection:'row',
-    margin:10
+    margin:10,
+    borderRadius:10,
+    backgroundColor:"darkgray"
   },
   image_container:{
     flex:2,
-    backgroundColor:"red"
+    margin:2
   },
   image:{
     flex: 1,
@@ -138,8 +140,7 @@ const styles = StyleSheet.create({
   },
   input_container:{
     flexDirection:'column',
-    flex:7,
-    backgroundColor:'blue'
+    flex:7
   },
   input_title:{
     flex:0
@@ -149,6 +150,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center'
+  },
+  input_text:{
+    color:'white',
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginTop:-3
   },
   title:{
     color:'white',

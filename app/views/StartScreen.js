@@ -25,7 +25,7 @@ export default class StartScreen extends React.Component {
       <SafeAreaView style={GlobalStyles.droidSafeArea}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <KeyboardAvoidingView 
-        behavior={Platform.OS === "ios" ? "padding" : null}
+        behavior={"padding"}
         style={styles.container}
         >
             <View style={{flex:5}}>
